@@ -13,9 +13,7 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome" });
-});
+app.use("/api/tutorials", require("./app/routes/tutorialRoutes"));
 
 db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
