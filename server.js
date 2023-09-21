@@ -15,10 +15,23 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/tutorials", require("./app/routes/tutorialRoutes"));
 
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-});
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
+db.sequelize
+  .authenticate()
+  .then(() => {
+    console.log(
+      "Connection to MySQL database has been established successfully."
+    );
+    app.listen(PORT, () => {
+      console.log("Server started on localhost:" + PORT);
+    });
+  })
+  .catch((error) => {
+    console.error("Unable to connect to the database:", error);
+  });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
