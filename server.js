@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
+const db = require("./app/models/index");
 
 const app = express();
 const PORT = 3000;
-const corsOpt = { origin: "http://localhost:3000" };
+const corsOpt = { origin: "http://localhost:3001" };
 
 //a mechanism by which a front-end client can make requests for resources to an external back-end server
 app.use(cors(corsOpt));
@@ -14,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome" });
+});
+
+db.sequelize.sync({ force: true }).then(() => {
+  console.log("Drop and re-sync db.");
 });
 
 app.listen(PORT, () => {
