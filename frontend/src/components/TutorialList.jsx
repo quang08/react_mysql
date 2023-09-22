@@ -17,19 +17,24 @@ const TutorialsList = () => {
   };
 
   const retrieveTutorials = () => {
-    // TutorialDataService.getAll()
-    //   .then((response) => {
-    //     setTutorials(response.data);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
+    TutorialDataService.getAll()
+      .then((response) => {
+        setTutorials(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   const refreshList = () => {
     retrieveTutorials();
     setCurrentTutorial(null);
     setCurrentIndex(-1);
+  };
+
+  const handleRefreshAfterSearch = () => {
+    refreshList();
+    setSearchTitle("");
   };
 
   const setActiveTutorial = (tutorial, index) => {
@@ -49,7 +54,8 @@ const TutorialsList = () => {
   };
 
   const handleSearchTitle = () => {
-    TutorialDataService.findByTitle(searchTitle)
+    const encodedTitle = encodeURIComponent(searchTitle);
+    TutorialDataService.findByTitle(encodedTitle)
       .then((response) => {
         setTutorials(response.data);
       })
@@ -68,16 +74,27 @@ const TutorialsList = () => {
           value={searchTitle}
           onChange={onChangeSearchTitle}
         />
-        <button
-          className="bg-blue-500 text-white py-2 px-4  rounded-lg hover:bg-blue-700 mt-3"
-          type="button"
-          onClick={searchTitle}
-        >
-          Search
-        </button>
+        <div className="flex justify-between w-[15%]">
+          <button
+            className="bg-blue-500 text-white py-2 px-4  rounded-lg hover:bg-blue-700 mt-3"
+            type="button"
+            onClick={handleSearchTitle}
+          >
+            Search
+          </button>
+          {searchTitle && (
+            <button
+              className="bg-yellow-500 text-white py-2 px-4  rounded-lg hover:bg-yellow-700 mt-3"
+              type="button"
+              onClick={handleRefreshAfterSearch}
+            >
+              Refresh
+            </button>
+          )}
+        </div>
       </div>
       <div className="flex w-full border-t-4 border-gray-300">
-        <div className="w-1/2 pr-4 mt-3">
+        <div className="w-1/2 pr-4 mt-3 bg-gray-100 rounded-sm p-2">
           <h4 className="text-2xl mb-2 font-bold">Tutorials List</h4>
           <ul className="list-disc list-inside">
             {tutorials.map((tutorial, index) => (
@@ -99,10 +116,10 @@ const TutorialsList = () => {
             Remove All
           </button>
         </div>
-        <div className="w-1/2 pl-4">
+        <div className="w-1/2 pl-4 mt-3">
           {currentTutorial ? (
-            <div>
-              <h4 className="text-2xl">Tutorial</h4>
+            <div className="flex flex-col gap-2 bg-gray-100 rounded-sm p-2">
+              <h4 className="text-2xl font-bold">Tutorial</h4>
               <div>
                 <strong>Title:</strong> {currentTutorial.title}
               </div>
@@ -115,13 +132,13 @@ const TutorialsList = () => {
               </div>
               <Link
                 to={"/tutorials/" + currentTutorial.id}
-                className="bg-yellow-500 text-white py-2 px-4 mt-4 rounded-lg hover:bg-yellow-700"
+                className="bg-yellow-500 text-white py-2 px-4 mt-4 w-[10%] rounded-lg hover:bg-yellow-700"
               >
                 Edit
               </Link>
             </div>
           ) : (
-            <div className="mt-4">
+            <div>
               <p>Please click on a Tutorial...</p>
             </div>
           )}

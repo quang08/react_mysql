@@ -20,26 +20,24 @@ const AddTutorial = () => {
   };
 
   const saveTutorial = () => {
-    console.log("saved", tutorial);
-    setSubmitted(true);
-    // const data = {
-    //   title,
-    //   description,
-    // };
+    const data = {
+      title,
+      description,
+    };
 
-    // TutorialDataService.create(data)
-    //   .then((response) => {
-    //     setTutorial({
-    //       title: response.data.title,
-    //       description: response.data.description,
-    //       published: response.data.published,
-    //     });
-    //     setSubmitted(true);
-    //     console.log(response.data);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
+    TutorialDataService.create(data)
+      .then((response) => {
+        setTutorial({
+          title: response.data.title,
+          description: response.data.description,
+          published: response.data.published,
+        });
+        setSubmitted(true);
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   const newTutorial = () => {

@@ -27,12 +27,12 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex justify-between text-2xl">
-          <div
-            href="/"
+          <Link
+            to={`https://github.com/quang08/react_mysql`}
             className="text-white cursor-pointer hover:bg-slate-800 transition duration-300 py-1 px-2 rounded-md  font-semibold"
           >
             Github Source Code
-          </div>
+          </Link>
         </div>
       </div>
     </nav>
