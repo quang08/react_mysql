@@ -20,8 +20,6 @@ const AddTutorial = () => {
   };
 
   const saveTutorial = () => {
-    // console.log("saved", tutorial);
-    // setSubmitted(true);
     const data = {
       title,
       description,
