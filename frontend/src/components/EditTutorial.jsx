@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TutorialDataService from "../services/tutorialService";
 
-const AddTutorial = () => {
+const EditTutorial = () => {
   const [tutorial, setTutorial] = useState({
     title: "",
     description: "",
@@ -110,4 +110,4 @@ const AddTutorial = () => {
   );
 };
 
-export default AddTutorial;
+export default EditTutorial;
