@@ -17,13 +17,13 @@ const TutorialsList = () => {
   };
 
   const retrieveTutorials = () => {
-    // TutorialDataService.getAll()
-    //   .then((response) => {
-    //     setTutorials(response.data);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
+    TutorialDataService.getAll()
+      .then((response) => {
+        setTutorials(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   const refreshList = () => {

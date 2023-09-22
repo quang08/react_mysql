@@ -11,45 +11,45 @@ const EditTutorial = () => {
 
   const { title, description } = tutorial;
 
-  const onChangeTitle = (e) => {
-    setTutorial({ ...tutorial, title: e.target.value });
-  };
+  //   const onChangeTitle = (e) => {
+  //     setTutorial({ ...tutorial, title: e.target.value });
+  //   };
 
-  const onChangeDescription = (e) => {
-    setTutorial({ ...tutorial, description: e.target.value });
-  };
+  //   const onChangeDescription = (e) => {
+  //     setTutorial({ ...tutorial, description: e.target.value });
+  //   };
 
-  const saveTutorial = () => {
-    console.log("saved", tutorial);
-    setSubmitted(true);
-    // const data = {
-    //   title,
-    //   description,
-    // };
+  //   const saveTutorial = () => {
+  //     console.log("saved", tutorial);
+  //     setSubmitted(true);
+  //     const data = {
+  //       title,
+  //       description,
+  //     };
 
-    // TutorialDataService.create(data)
-    //   .then((response) => {
-    //     setTutorial({
-    //       title: response.data.title,
-    //       description: response.data.description,
-    //       published: response.data.published,
-    //     });
-    //     setSubmitted(true);
-    //     console.log(response.data);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
-  };
+  //     TutorialDataService.create(data)
+  //       .then((response) => {
+  //         setTutorial({
+  //           title: response.data.title,
+  //           description: response.data.description,
+  //           published: response.data.published,
+  //         });
+  //         setSubmitted(true);
+  //         console.log(response.data);
+  //       })
+  //       .catch((e) => {
+  //         console.log(e);
+  //       });
+  //   };
 
-  const newTutorial = () => {
-    setTutorial({
-      title: "",
-      description: "",
-      published: false,
-    });
-    setSubmitted(false);
-  };
+  //   const newTutorial = () => {
+  //     setTutorial({
+  //       title: "",
+  //       description: "",
+  //       published: false,
+  //     });
+  //     setSubmitted(false);
+  //   };
 
   return (
     <div className="submit-form">
@@ -57,7 +57,7 @@ const EditTutorial = () => {
         <div>
           <h4>You submitted successfully!</h4>
           <button
-            onClick={newTutorial}
+            // onClick={newTutorial}
             className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
           >
             Add
@@ -75,7 +75,7 @@ const EditTutorial = () => {
               className="form-input w-full rounded-sm border-gray-300"
               required
               value={title}
-              onChange={onChangeTitle}
+              //   onChange={onChangeTitle}
               name="title"
             />
           </div>
@@ -92,14 +92,14 @@ const EditTutorial = () => {
               id="description"
               className="form-input w-full rounded-sm border-gray-300"
               required
-              value={description}
-              onChange={onChangeDescription}
+              //   value={description}
+              //   onChange={onChangeDescription}
               name="description"
             />
           </div>
 
           <button
-            onClick={saveTutorial}
+            // onClick={saveTutorial}
             className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700"
           >
             Submit
