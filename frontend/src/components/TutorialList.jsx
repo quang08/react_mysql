@@ -118,21 +118,23 @@ const TutorialsList = () => {
         </div>
         <div className="w-1/2 pl-4 mt-3">
           {currentTutorial ? (
-            <div className="flex flex-col gap-2 bg-gray-100 rounded-sm p-2">
+            <div className="flex flex-col h-full gap-2 bg-gray-100 rounded-sm p-2 justify-between">
               <h4 className="text-2xl font-bold">Tutorial</h4>
-              <div>
-                <strong>Title:</strong> {currentTutorial.title}
-              </div>
-              <div>
-                <strong>Description:</strong> {currentTutorial.description}
-              </div>
-              <div>
-                <strong>Status:</strong>{" "}
-                {currentTutorial.published ? "Published" : "Pending"}
+              <div className="flex flex-col gap-2">
+                <div>
+                  <strong>Title:</strong> {currentTutorial.title}
+                </div>
+                <div>
+                  <strong>Description:</strong> {currentTutorial.description}
+                </div>
+                <div>
+                  <strong>Status:</strong>{" "}
+                  {currentTutorial.published ? "Published" : "Pending"}
+                </div>
               </div>
               <Link
                 to={"/tutorials/" + currentTutorial.id}
-                className="bg-yellow-500 text-white py-2 px-4 mt-4 w-[10%] rounded-lg hover:bg-yellow-700"
+                className="bg-yellow-500 text-white py-2 px-4 mt-4 w-fit rounded-lg hover:bg-yellow-700"
               >
                 Edit
               </Link>
